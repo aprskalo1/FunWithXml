@@ -1,8 +1,6 @@
 ﻿using FunWithXml_API.Models;
 using FunWithXml_API.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
 
 namespace FunWithXml_API.Controllers
 {

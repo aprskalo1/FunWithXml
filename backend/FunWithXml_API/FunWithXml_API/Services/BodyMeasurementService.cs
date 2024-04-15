@@ -1,8 +1,5 @@
 ﻿using FunWithXml_API.Data;
 using FunWithXml_API.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace FunWithXml_API.Services
 {
@@ -22,16 +19,13 @@ namespace FunWithXml_API.Services
 
         public async Task<BodyMeasurement> PostBodyMeasurementAsync(BodyMeasurement bodyMeasurement)
         {
-            try
+            if (bodyMeasurement == null)
             {
-                await _context.BodyMeasurements.AddAsync(bodyMeasurement);
-                await _context.SaveChangesAsync();
-                return bodyMeasurement;
+                throw new ArgumentNullException(nameof(bodyMeasurement));
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            await _context.BodyMeasurements.AddAsync(bodyMeasurement);
+            await _context.SaveChangesAsync();
+            return bodyMeasurement;
         }
     }
 }
