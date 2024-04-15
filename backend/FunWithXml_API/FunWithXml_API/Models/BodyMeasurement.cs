@@ -6,30 +6,30 @@ namespace FunWithXml_API.Models
     {
         [Key]
         public Guid Id { get; set; }
-        public float BiaDi { get; set; }
-        public float BiiDi { get; set; }
-        public float BitDi { get; set; }
-        public float CheDe { get; set; }
-        public float CheDi { get; set; }
-        public float ElbDi { get; set; }
-        public float WriDi { get; set; }
-        public float KneDi { get; set; }
-        public float AnkDi { get; set; }
-        public float ShoGi { get; set; }
-        public float CheGi { get; set; }
-        public float WaiGi { get; set; }
-        public float NavGi { get; set; }
-        public float HipGi { get; set; }
-        public float ThiGi { get; set; }
-        public float BicGi { get; set; }
-        public float ForGi { get; set; }
-        public float KneGi { get; set; }
-        public float CalGi { get; set; }
-        public float AnkGi { get; set; }
-        public float WriGi { get; set; }
-        public int Age { get; set; }
-        public float Wgt { get; set; }
-        public float Hgt { get; set; }
-        public int Sex { get; set; }
+        public float bia_di { get; set; }
+        public float bii_di { get; set; }
+        public float bit_di { get; set; }
+        public float che_de { get; set; }
+        public float che_di { get; set; }
+        public float elb_di { get; set; }
+        public float wri_di { get; set; }
+        public float kne_di { get; set; }
+        public float ank_di { get; set; }
+        public float sho_gi { get; set; }
+        public float che_gi { get; set; }
+        public float wai_gi { get; set; }
+        public float nav_gi { get; set; }
+        public float hip_gi { get; set; }
+        public float thi_gi { get; set; }
+        public float bic_gi { get; set; }
+        public float for_gi { get; set; }
+        public float kne_gi { get; set; }
+        public float cal_gi { get; set; }
+        public float ank_gi { get; set; }
+        public float wri_gi { get; set; }
+        public int age { get; set; }
+        public float wgt { get; set; }
+        public float hgt { get; set; }
+        public int sex { get; set; }
     }
 }

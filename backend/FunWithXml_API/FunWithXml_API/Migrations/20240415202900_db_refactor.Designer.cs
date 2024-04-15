@@ -4,6 +4,7 @@ using FunWithXml_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FunWithXml_API.Migrations
 {
     [DbContext(typeof(FunWithXmlDbContext))]
-    partial class FunWithXmlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240415202900_db_refactor")]
+    partial class db_refactor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,79 +31,79 @@ namespace FunWithXml_API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("age")
+                    b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<float>("ank_di")
+                    b.Property<float>("Ank_di")
                         .HasColumnType("real");
 
-                    b.Property<float>("ank_gi")
+                    b.Property<float>("Ank_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("bia_di")
+                    b.Property<float>("Bia_di")
                         .HasColumnType("real");
 
-                    b.Property<float>("bic_gi")
+                    b.Property<float>("Bic_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("bii_di")
+                    b.Property<float>("Bii_di")
                         .HasColumnType("real");
 
-                    b.Property<float>("bit_di")
+                    b.Property<float>("Bit_di")
                         .HasColumnType("real");
 
-                    b.Property<float>("cal_gi")
+                    b.Property<float>("Cal_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("che_de")
+                    b.Property<float>("Che_de")
                         .HasColumnType("real");
 
-                    b.Property<float>("che_di")
+                    b.Property<float>("Che_di")
                         .HasColumnType("real");
 
-                    b.Property<float>("che_gi")
+                    b.Property<float>("Che_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("elb_di")
+                    b.Property<float>("Elb_di")
                         .HasColumnType("real");
 
-                    b.Property<float>("for_gi")
+                    b.Property<float>("For_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("hgt")
+                    b.Property<float>("Hgt")
                         .HasColumnType("real");
 
-                    b.Property<float>("hip_gi")
+                    b.Property<float>("Hip_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("kne_di")
+                    b.Property<float>("Kne_di")
                         .HasColumnType("real");
 
-                    b.Property<float>("kne_gi")
+                    b.Property<float>("Kne_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("nav_gi")
+                    b.Property<float>("Nav_gi")
                         .HasColumnType("real");
 
-                    b.Property<int>("sex")
+                    b.Property<int>("Sex")
                         .HasColumnType("int");
 
-                    b.Property<float>("sho_gi")
+                    b.Property<float>("Sho_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("thi_gi")
+                    b.Property<float>("Thi_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("wai_gi")
+                    b.Property<float>("Wai_gi")
                         .HasColumnType("real");
 
-                    b.Property<float>("wgt")
+                    b.Property<float>("Wgt")
                         .HasColumnType("real");
 
-                    b.Property<float>("wri_di")
+                    b.Property<float>("Wri_di")
                         .HasColumnType("real");
 
-                    b.Property<float>("wri_gi")
+                    b.Property<float>("Wri_gi")
                         .HasColumnType("real");
 
                     b.HasKey("Id");

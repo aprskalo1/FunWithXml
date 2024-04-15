@@ -1,6 +1,7 @@
 ﻿using FunWithXml_API.Data;
 using FunWithXml_API.Models;
-using System.Xml.Schema;
+using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace FunWithXml_API.Services
@@ -21,7 +22,16 @@ namespace FunWithXml_API.Services
 
         public async Task<BodyMeasurement> PostBodyMeasurementAsync(BodyMeasurement bodyMeasurement)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _context.BodyMeasurements.AddAsync(bodyMeasurement);
+                await _context.SaveChangesAsync();
+                return bodyMeasurement;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
