@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="positiveFloat">
+    <xs:restriction base="xs:float">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="positiveInt">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="sexType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="BodyMeasurement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="bia_di" type="positiveFloat"/>
+        <xs:element name="bii_di" type="positiveFloat"/>
+        <xs:element name="bit_di" type="positiveFloat"/>
+        <xs:element name="che_de" type="positiveFloat"/>
+        <xs:element name="che_di" type="positiveFloat"/>
+        <xs:element name="elb_di" type="positiveFloat"/>
+        <xs:element name="wri_di" type="positiveFloat"/>
+        <xs:element name="kne_di" type="positiveFloat"/>
+        <xs:element name="ank_di" type="positiveFloat"/>
+        <xs:element name="sho_gi" type="positiveFloat"/>
+        <xs:element name="che_gi" type="positiveFloat"/>
+        <xs:element name="wai_gi" type="positiveFloat"/>
+        <xs:element name="nav_gi" type="positiveFloat"/>
+        <xs:element name="hip_gi" type="positiveFloat"/>
+        <xs:element name="thi_gi" type="positiveFloat"/>
+        <xs:element name="bic_gi" type="positiveFloat"/>
+        <xs:element name="for_gi" type="positiveFloat"/>
+        <xs:element name="kne_gi" type="positiveFloat"/>
+        <xs:element name="cal_gi" type="positiveFloat"/>
+        <xs:element name="ank_gi" type="positiveFloat"/>
+        <xs:element name="wri_gi" type="positiveFloat"/>
+        <xs:element name="age" type="positiveInt"/>
+        <xs:element name="wgt" type="positiveFloat"/>
+        <xs:element name="hgt" type="positiveFloat"/>
+        <xs:element name="sex" type="sexType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

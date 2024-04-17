@@ -15,19 +15,12 @@ namespace FunWithXml_API.Controllers
             _bodyMeasurementsService = bodyMeasurementsService;
         }
 
-        [HttpPost]
+        [HttpPost("PostBodyMeasurement")]
         [Consumes("application/xml")]
         public async Task<IActionResult> PostBodyMeasurement(BodyMeasurement bodyMeasurement)
         {
-            try
-            {
-                var value = await _bodyMeasurementsService.PostBodyMeasurementAsync(bodyMeasurement);
-                return Ok(value);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
+            var value = await _bodyMeasurementsService.PostBodyMeasurementAsync(bodyMeasurement);
+            return Ok(value);
         }
     }
 }

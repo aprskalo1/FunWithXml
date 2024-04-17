@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Xml.Serialization;
 
 namespace FunWithXml_API.Models
 {
     public class BodyMeasurement
     {
         [Key]
+        [XmlIgnore]
         public Guid Id { get; set; }
         public float bia_di { get; set; }
         public float bii_di { get; set; }
@@ -31,5 +33,15 @@ namespace FunWithXml_API.Models
         public float wgt { get; set; }
         public float hgt { get; set; }
         public int sex { get; set; }
+
+        public string ToXml()
+        { 
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(BodyMeasurement));
+            using (StringWriter textWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(textWriter, this);
+                return textWriter.ToString();
+            }
+        }
     }
 }
