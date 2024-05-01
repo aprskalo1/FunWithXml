@@ -1,6 +1,8 @@
 using FunWithXml_API.Data;
 using FunWithXml_API.Services;
 using Microsoft.EntityFrameworkCore;
+using SoapCore;
+using System.ServiceModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,7 @@ builder.Services.AddDbContext<FunWithXmlDbContext>(options =>
 });
 
 builder.Services.AddScoped<IBodyMeasurementsService, BodyMeasurementService>();
+builder.Services.AddScoped<ISoapService, SoapService>();
 
 var app = builder.Build();
 
@@ -32,5 +35,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseSoapEndpoint<ISoapService>("/SoapService.svc", new SoapEncoderOptions());
 
 app.Run();

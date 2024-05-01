@@ -1,0 +1,39 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:simpleType name="sex">
+    <xs:restriction base="xs:byte">
+    <xs:enumeration value="1"/>
+    <xs:enumeration value="0"/>
+    </xs:restriction>
+</xs:simpleType>
+  <xs:element name="BodyMeasurement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:float" name="bia_di"/>
+        <xs:element type="xs:float" name="bii_di"/>
+        <xs:element type="xs:float" name="bit_di"/>
+        <xs:element type="xs:float" name="che_de"/>
+        <xs:element type="xs:float" name="che_di"/>
+        <xs:element type="xs:float" name="elb_di"/>
+        <xs:element type="xs:float" name="wri_di"/>
+        <xs:element type="xs:float" name="kne_di"/>
+        <xs:element type="xs:float" name="ank_di"/>
+        <xs:element type="xs:float" name="sho_gi"/>
+        <xs:element type="xs:float" name="che_gi"/>
+        <xs:element type="xs:float" name="wai_gi"/>
+        <xs:element type="xs:float" name="nav_gi"/>
+        <xs:element type="xs:float" name="hip_gi"/>
+        <xs:element type="xs:float" name="thi_gi"/>
+        <xs:element type="xs:float" name="bic_gi"/>
+        <xs:element type="xs:float" name="for_gi"/>
+        <xs:element type="xs:float" name="kne_gi"/>
+        <xs:element type="xs:float" name="cal_gi"/>
+        <xs:element type="xs:float" name="ank_gi"/>
+        <xs:element type="xs:float" name="wri_gi"/>
+        <xs:element type="xs:float" name="age"/>
+        <xs:element type="xs:float" name="wgt"/>
+        <xs:element type="xs:float" name="hgt"/>
+        <xs:element type="xs:byte" name="sex"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
