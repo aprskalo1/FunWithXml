@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CsvHelper.Configuration.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 
 namespace FunWithXml_API.Models
@@ -35,7 +36,7 @@ namespace FunWithXml_API.Models
         public int sex { get; set; }
 
         public string ToXml()
-        { 
+        {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(BodyMeasurement));
             using (StringWriter textWriter = new StringWriter())
             {

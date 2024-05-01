@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="XmlFiles\" />
     <Folder Include="ValidationSchemas\" />
+    <Folder Include="XmlFiles\" />
   </ItemGroup>
 
 </Project>

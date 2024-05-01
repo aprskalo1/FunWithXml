@@ -18,7 +18,18 @@ builder.Services.AddDbContext<FunWithXmlDbContext>(options =>
     options.UseSqlServer("name=ConnectionStrings:DefaultConnection");
 });
 
-builder.Services.AddScoped<IBodyMeasurementsService, BodyMeasurementService>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificPort", builder =>
+    {
+        builder.WithOrigins($"http://127.0.0.1:5500/")
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
+builder.Services.AddScoped<IBodyMeasurementsService, BodyMeasurementService>(
+    );
 builder.Services.AddScoped<ISoapService, SoapService>();
 
 var app = builder.Build();
@@ -35,6 +46,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseSoapEndpoint<ISoapService>("/SoapService.svc", new SoapEncoderOptions());
+app.UseSoapEndpoint<ISoapService>("/SoapService.asmx", new SoapEncoderOptions());
 
 app.Run();
