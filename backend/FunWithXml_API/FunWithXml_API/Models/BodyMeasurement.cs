@@ -1,5 +1,4 @@
-﻿using CsvHelper.Configuration.Attributes;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 
 namespace FunWithXml_API.Models

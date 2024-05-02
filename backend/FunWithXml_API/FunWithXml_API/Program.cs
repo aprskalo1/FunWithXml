@@ -1,8 +1,11 @@
 using FunWithXml_API.Data;
 using FunWithXml_API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SoapCore;
 using System.ServiceModel;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,9 +31,23 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddScoped<IBodyMeasurementsService, BodyMeasurementService>(
-    );
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+    };
+});
+
+builder.Services.AddScoped<IBodyMeasurementsService, BodyMeasurementService>();
 builder.Services.AddScoped<ISoapService, SoapService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
@@ -43,6 +60,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
