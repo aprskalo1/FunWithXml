@@ -16,11 +16,11 @@ namespace FunWithXml_API.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult Login(LoginModel loginModel)
+        public async Task<IActionResult> Login(LoginModel loginModel)
         {
             try
             {
-                var token = _authService.LoginAsync(loginModel.Username, loginModel.Password);
+                var token = await _authService.LoginAsync(loginModel.Username, loginModel.Password);
                 if (token != null)
                 {
                     return Ok(token);

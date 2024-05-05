@@ -23,12 +23,13 @@ builder.Services.AddDbContext<FunWithXmlDbContext>(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificPort", builder =>
-    {
-        builder.WithOrigins($"http://127.0.0.1:5500/")
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://127.0.0.1:5500")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
 });
 
 builder.Services.AddAuthentication(options =>
@@ -41,7 +42,7 @@ builder.Services.AddAuthentication(options =>
     {
         ValidateIssuer = false,
         ValidateAudience = false,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("C4aFJ0hlUIHvFPrIjyfWzjQoq4RiW/2s7/0B/tzMx5o="))
     };
 });
 
@@ -62,6 +63,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.MapControllers();
 app.UseSoapEndpoint<ISoapService>("/SoapService.asmx", new SoapEncoderOptions());

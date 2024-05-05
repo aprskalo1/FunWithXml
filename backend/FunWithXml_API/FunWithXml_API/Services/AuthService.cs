@@ -24,7 +24,8 @@ namespace FunWithXml_API.Services
 
         public string GenerateJwtTokenAsync(string username)
         {
-            var tokenKey = Encoding.UTF8.GetBytes("superSecretKey@345");
+            var tokenKey = Encoding.UTF8.GetBytes("C4aFJ0hlUIHvFPrIjyfWzjQoq4RiW/2s7/0B/tzMx5o=");
+
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
