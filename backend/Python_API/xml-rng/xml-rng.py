@@ -14,7 +14,7 @@ def validate_xml():
         if xml_data is None:
             return jsonify({"error": "XML data is missing in the query parameter."}), 400
         
-        rng_schema = etree.parse(RNG_FILE)
+        rng_schema = etree.parse(RNG_FILE) 
         schema = etree.RelaxNG(rng_schema)
         
         xml_doc = etree.fromstring(xml_data)

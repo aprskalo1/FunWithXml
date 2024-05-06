@@ -1,39 +1,82 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<xs:simpleType name="sex">
-    <xs:restriction base="xs:byte">
-    <xs:enumeration value="1"/>
-    <xs:enumeration value="0"/>
-    </xs:restriction>
-</xs:simpleType>
-  <xs:element name="BodyMeasurement">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element type="xs:float" name="bia_di"/>
-        <xs:element type="xs:float" name="bii_di"/>
-        <xs:element type="xs:float" name="bit_di"/>
-        <xs:element type="xs:float" name="che_de"/>
-        <xs:element type="xs:float" name="che_di"/>
-        <xs:element type="xs:float" name="elb_di"/>
-        <xs:element type="xs:float" name="wri_di"/>
-        <xs:element type="xs:float" name="kne_di"/>
-        <xs:element type="xs:float" name="ank_di"/>
-        <xs:element type="xs:float" name="sho_gi"/>
-        <xs:element type="xs:float" name="che_gi"/>
-        <xs:element type="xs:float" name="wai_gi"/>
-        <xs:element type="xs:float" name="nav_gi"/>
-        <xs:element type="xs:float" name="hip_gi"/>
-        <xs:element type="xs:float" name="thi_gi"/>
-        <xs:element type="xs:float" name="bic_gi"/>
-        <xs:element type="xs:float" name="for_gi"/>
-        <xs:element type="xs:float" name="kne_gi"/>
-        <xs:element type="xs:float" name="cal_gi"/>
-        <xs:element type="xs:float" name="ank_gi"/>
-        <xs:element type="xs:float" name="wri_gi"/>
-        <xs:element type="xs:float" name="age"/>
-        <xs:element type="xs:float" name="wgt"/>
-        <xs:element type="xs:float" name="hgt"/>
-        <xs:element type="xs:byte" name="sex"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-</xs:schema>
+<element name="ArrayOfBodyMeasurement" xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <zeroOrMore>
+        <element name="BodyMeasurement">
+            <element name="bia_di">
+                <data type="double" />
+            </element>
+            <element name="bii_di">
+                <data type="double" />
+            </element>
+            <element name="bit_di">
+                <data type="double" />
+            </element>
+            <element name="che_de">
+                <data type="double" />
+            </element>
+            <element name="che_di">
+                <data type="double" />
+            </element>
+            <element name="elb_di">
+                <data type="double" />
+            </element>
+            <element name="wri_di">
+                <data type="double" />
+            </element>
+            <element name="kne_di">
+                <data type="double" />
+            </element>
+            <element name="ank_di">
+                <data type="double" />
+            </element>
+            <element name="sho_gi">
+                <data type="double" />
+            </element>
+            <element name="che_gi">
+                <data type="double" />
+            </element>
+            <element name="wai_gi">
+                <data type="double" />
+            </element>
+            <element name="nav_gi">
+                <data type="double" />
+            </element>
+            <element name="hip_gi">
+                <data type="double" />
+            </element>
+            <element name="thi_gi">
+                <data type="double" />
+            </element>
+            <element name="bic_gi">
+                <data type="double" />
+            </element>
+            <element name="for_gi">
+                <data type="double" />
+            </element>
+            <element name="kne_gi">
+                <data type="double" />
+            </element>
+            <element name="cal_gi">
+                <data type="double" />
+            </element>
+            <element name="ank_gi">
+                <data type="double" />
+            </element>
+            <element name="wri_gi">
+                <data type="double" />
+            </element>
+            <element name="age">
+                <data type="integer" />
+            </element>
+            <element name="wgt">
+                <data type="double" />
+            </element>
+            <element name="hgt">
+                <data type="double" />
+            </element>
+            <element name="sex">
+                <data type="boolean" />
+            </element>
+        </element>
+    </zeroOrMore>
+</element>
