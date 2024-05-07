@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import xmlrpc.client
 
 proxy = xmlrpc.client.ServerProxy("http://localhost:8000/")
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/weather")
 def get_weather():

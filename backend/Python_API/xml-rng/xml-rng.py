@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from lxml import etree
 
 app = Flask(__name__)
+CORS(app)
 
 RNG_FILE = "schema.rng"
 
-
-@app.route('/validate-xml', methods=['GET'])
+@app.route('/validate-xml', methods=['POST'])
 def validate_xml():
     try:
         xml_data = request.args.get('xml_data')

@@ -1,4 +1,4 @@
-.button-19 {
+.button {
   appearance: button;
   background-color: #1899D6;
   border: solid transparent;
@@ -28,9 +28,11 @@
   white-space: nowrap;
   width: 100%;
   margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
-.button-19:after {
+.button:after {
   background-clip: padding-box;
   background-color: #1CB0F6;
   border: solid transparent;
@@ -45,21 +47,21 @@
   z-index: -1;
 }
 
-.button-19:main,
-.button-19:focus {
+.button:main,
+.button:focus {
   user-select: auto;
 }
 
-.button-19:hover:not(:disabled) {
+.button:hover:not(:disabled) {
   filter: brightness(1.1);
   -webkit-filter: brightness(1.1);
 }
 
-.button-19:disabled {
+.button:disabled {
   cursor: auto;
 }
 
-.button-19:active {
+.button:active {
   border-width: 4px 0 0;
   background: none;
 }
@@ -70,11 +72,37 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    width: 20%;
+    width: 50%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.text-area {
+    width: 100%;
+    margin-bottom: 1rem;
+    border: none;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    text-align: center;
+    height: 40%;
+}
+
+.input-area {
+  width: 100%;
+  margin-bottom: 1rem;
+  border: none;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  text-align: center;
+  height: 2rem;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: antiquewhite;
 }

@@ -10,9 +10,17 @@
 
 <body>
     <div class="container">
-        <button id="xsdValidation" class="button-19">XSD VALIDATION</button>
-        <script src="index.js"></script>
+        <textarea id="input" class="text-area" cols="30" placeholder="Enter CSV data, city name or age" rows="10"></textarea>
+
+        <div class="button-container">
+            <button id="xsdValidation" class="button">XSD VALIDATION</button>
+            <button id="soap" class="button">SOAP</button>
+            <button id="rngValidation" class="button">RNG VALIDATION</button>
+            <button id="cityTemp" class="button">GET TEMPERATURE</button>
+            <button id="age" class="button">GET PERSON BY AGE</button>
+        </div>
     </div>
+    <script src="index.js"></script>
 </body>
 
 </html>

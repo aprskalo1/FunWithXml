@@ -1,7 +1,5 @@
-<element name="ArrayOfBodyMeasurement" xmlns="http://relaxng.org/ns/structure/1.0"
+<element name="BodyMeasurement" xmlns="http://relaxng.org/ns/structure/1.0"
     datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-    <zeroOrMore>
-        <element name="BodyMeasurement">
             <element name="bia_di">
                 <data type="double" />
             </element>
@@ -77,6 +75,4 @@
             <element name="sex">
                 <data type="boolean" />
             </element>
-        </element>
-    </zeroOrMore>
 </element>
