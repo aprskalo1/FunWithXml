@@ -23,7 +23,7 @@ namespace FunWithXml_API.Controllers
                 var token = await _authService.LoginAsync(loginModel.Username, loginModel.Password);
                 if (token != null)
                 {
-                    return Ok(token);
+                    return Ok(new { token });
                 }
                 else
                 {
