@@ -44,6 +44,7 @@ document.getElementById("xsdValidation").addEventListener("click", function () {
             })
             .then(data => {
                 console.log("Response:", data);
+                alert(data);
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -75,6 +76,7 @@ document.getElementById("rngValidation").addEventListener("click", function () {
             })
             .then(data => {
                 console.log("Response:", data);
+                alert(data);
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -140,9 +142,16 @@ document.getElementById("cityTemp").addEventListener("click", function () {
             }
             return response.json();
         })
-        .then(data => {
-            var temperature = data.temperature;
-            alert(`Temperature in ${cityName}: ${temperature}°C`);
+        .then(dataList => {
+            if (dataList.length > 0) {
+                var temperatureText = "";
+                dataList.forEach(cityData => {
+                    temperatureText += `Temperature in ${cityData.city_name}: ${cityData.temperature}°C\n`;
+                });
+                alert(temperatureText);
+            } else {
+                alert("City data not found");
+            }
         })
         .catch(error => {
             console.error("Error:", error);

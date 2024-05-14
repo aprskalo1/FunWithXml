@@ -7,7 +7,7 @@ namespace FunWithXml_API.Services
 {
     public interface IBodyMeasurementsService
     {
-        Task<BodyMeasurement> PostBodyMeasurementAsync(BodyMeasurement bodyMeasurement);
+        Task<string> PostBodyMeasurementAsync(BodyMeasurement bodyMeasurement);
     }
 
     public class BodyMeasurementService : IBodyMeasurementsService
@@ -19,39 +19,42 @@ namespace FunWithXml_API.Services
             _context = context;
         }
 
-        public async Task<BodyMeasurement> PostBodyMeasurementAsync(BodyMeasurement bodyMeasurement)
+        public async Task<string> PostBodyMeasurementAsync(BodyMeasurement bodyMeasurement)
         {
             try
             {
-                if (!ValidateWithXSD(bodyMeasurement.ToXml()))
+                List<string> validationErrors = ValidateWithXSD(bodyMeasurement.ToXml());
+                if (validationErrors.Count > 0)
                 {
-                    throw new Exception("XSD validation failed, please check your XML body.");
+                    return string.Join(", ", validationErrors);
                 }
 
                 await _context.BodyMeasurements.AddAsync(bodyMeasurement);
                 await _context.SaveChangesAsync();
-                return bodyMeasurement;
             }
+
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+
+            return "Body Measurement added successfully!";
         }
 
-        private bool ValidateWithXSD(string xmlData)
+        private List<string> ValidateWithXSD(string xmlData)
         {
             XmlSchemaSet schemas = new XmlSchemaSet();
             schemas.Add("", "ValidationSchemas/BodyMeasurement.xsd");
 
             XDocument doc = XDocument.Parse(xmlData);
 
-            bool isValid = true;
+            List<string> validationErrors = new List<string>();
             doc.Validate(schemas, (o, e) =>
             {
-                isValid = false;
+                validationErrors.Add(e.Message);
             });
 
-            return isValid;
+            return validationErrors;
         }
     }
 }

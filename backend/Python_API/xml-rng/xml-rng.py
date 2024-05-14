@@ -21,11 +21,13 @@ def validate_xml():
         xml_doc = etree.fromstring(xml_data)
         
         is_valid = schema.validate(xml_doc)
+
+        validation_errors = [str(error) for error in schema.error_log]  
         
         if is_valid:
-            return jsonify({"message": "XML is valid against the schema."}), 200
+            return "XML is valid against the schema.", 200
         else:
-            return jsonify({"error": "XML validation failed."}), 400
+            return "XML is not valid against the schema.\n" + "\n".join(validation_errors)
     
     except etree.XMLSyntaxError as e:
         return jsonify({"error": f"Invalid XML syntax: {str(e)}"}), 400

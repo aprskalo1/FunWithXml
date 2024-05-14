@@ -21,9 +21,8 @@ namespace FunWithXml_API.Controllers
         [Consumes("application/xml")]
         public async Task<IActionResult> PostBodyMeasurement(BodyMeasurement bodyMeasurement)
         {
-            var value = await _bodyMeasurementsService.PostBodyMeasurementAsync(bodyMeasurement);
-            return Ok(value);
-
+            string message = await _bodyMeasurementsService.PostBodyMeasurementAsync(bodyMeasurement);
+            return Ok(message);
         }
 
         [HttpGet("GetBodyMeasurement")]
