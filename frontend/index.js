@@ -29,10 +29,13 @@ document.getElementById("xsdValidation").addEventListener("click", function () {
     try {
         const xmlBody = generateXmlFromCsv(csvData);
 
+        const token = localStorage.getItem("token");
+
         fetch("https://localhost:7238/api/FunWithXml/PostBodyMeasurement", {
             method: "POST",
             headers: {
-                "Content-Type": "application/xml"
+                "Content-Type": "application/xml",
+                "Authorization": `Bearer ${token}`
             },
             body: xmlBody
         })
@@ -166,9 +169,16 @@ document.getElementById("age").addEventListener("click", function () {
         return;
     }
 
+    var token = localStorage.getItem("token");
+
     var url = `https://localhost:7238/api/FunWithXml/GetBodyMeasurement?age=${encodeURIComponent(input)}`;
 
-    fetch(url)
+    fetch(url, {
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+        }
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error("Person data not found");
@@ -188,5 +198,27 @@ document.getElementById("age").addEventListener("click", function () {
         .catch(error => {
             console.error("Error:", error);
             alert(error.message);
+        });
+});
+
+
+document.getElementById("logout").addEventListener("click", function () {
+    fetch("https://localhost:7238/api/Auth/Logout", {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Logout failed");
+            }
+            console.log("Logged out successfully");
+            localStorage.removeItem("token");
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Error occurred during logout. Please try again.");
         });
 });

@@ -12,6 +12,7 @@ namespace FunWithXml_API.Data
 
         public DbSet<BodyMeasurement> BodyMeasurements { get; set; }
         public DbSet<LoginModel> LoginModel { get; set; }
+        public DbSet<BlackListedTokens> BlackListedTokens { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

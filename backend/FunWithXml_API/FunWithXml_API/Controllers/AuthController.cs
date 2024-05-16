@@ -1,5 +1,6 @@
 ﻿using FunWithXml_API.Models;
 using FunWithXml_API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FunWithXml_API.Controllers
@@ -29,6 +30,22 @@ namespace FunWithXml_API.Controllers
                 {
                     return Unauthorized("Invalid username or password");
                 }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+            }
+        }
+
+        [HttpPost("Logout")]
+        [Authorize]
+        public IActionResult Logout()
+        {
+            try
+            {
+                var token = Request.Headers["Authorization"].ToString().Split(" ")[1];
+                _authService.LogoutAsync(token);
+                return Ok("Logged out successfully");
             }
             catch (Exception)
             {

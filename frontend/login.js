@@ -6,6 +6,7 @@ document.getElementById("login-btn").addEventListener("click", function () {
         login(username, password)
             .then(token => {
                 if (token) {
+                    localStorage.setItem("token", token);
                     alert("You are logged in!");
                 } else {
                     alert("Invalid username or password");

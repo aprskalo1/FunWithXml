@@ -1,5 +1,6 @@
 ﻿using FunWithXml_API.Models;
 using FunWithXml_API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FunWithXml_API.Controllers
@@ -19,6 +20,7 @@ namespace FunWithXml_API.Controllers
 
         [HttpPost("PostBodyMeasurement")]
         [Consumes("application/xml")]
+        [Authorize]
         public async Task<IActionResult> PostBodyMeasurement(BodyMeasurement bodyMeasurement)
         {
             string message = await _bodyMeasurementsService.PostBodyMeasurementAsync(bodyMeasurement);
@@ -26,6 +28,7 @@ namespace FunWithXml_API.Controllers
         }
 
         [HttpGet("GetBodyMeasurement")]
+        [Authorize]
         public IActionResult GetBodyMeasurement(int age)
         {
             var value = _soapService.SearchXmlFile(age);

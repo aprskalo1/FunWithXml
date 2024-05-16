@@ -1,1 +1,30 @@
-﻿<?xml version="1.0" encoding="utf-8"?><ArrayOfBodyMeasurement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><BodyMeasurement><bia_di>46</bia_di><bii_di>30.1</bii_di><bit_di>34.5</bit_di><che_de>20.2</che_de><che_di>31.1</che_di><elb_di>16.4</elb_di><wri_di>13.3</wri_di><kne_di>22.2</kne_di><ank_di>14.9</ank_di><sho_gi>129.5</sho_gi><che_gi>108.8</che_gi><wai_gi>89.5</wai_gi><nav_gi>89.5</nav_gi><hip_gi>106</hip_gi><thi_gi>59.5</thi_gi><bic_gi>37.5</bic_gi><for_gi>30.1</for_gi><kne_gi>39.9</kne_gi><cal_gi>41.5</cal_gi><ank_gi>23.5</ank_gi><wri_gi>19</wri_gi><age>24</age><wgt>89.6</wgt><hgt>178</hgt><sex>0</sex></BodyMeasurement></ArrayOfBodyMeasurement>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBodyMeasurement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BodyMeasurement>
+    <bia_di>46</bia_di>
+    <bii_di>30.1</bii_di>
+    <bit_di>34.5</bit_di>
+    <che_de>20.2</che_de>
+    <che_di>31.1</che_di>
+    <elb_di>16.4</elb_di>
+    <wri_di>13.3</wri_di>
+    <kne_di>22.2</kne_di>
+    <ank_di>14.9</ank_di>
+    <sho_gi>129.5</sho_gi>
+    <che_gi>108.8</che_gi>
+    <wai_gi>89.5</wai_gi>
+    <nav_gi>89.5</nav_gi>
+    <hip_gi>106</hip_gi>
+    <thi_gi>59.5</thi_gi>
+    <bic_gi>37.5</bic_gi>
+    <for_gi>30.1</for_gi>
+    <kne_gi>39.9</kne_gi>
+    <cal_gi>41.5</cal_gi>
+    <ank_gi>23.5</ank_gi>
+    <wri_gi>19</wri_gi>
+    <age>24</age>
+    <wgt>89.6</wgt>
+    <hgt>178</hgt>
+    <sex>0</sex>
+  </BodyMeasurement>
+</ArrayOfBodyMeasurement>
