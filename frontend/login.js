@@ -4,9 +4,10 @@ document.getElementById("login-btn").addEventListener("click", function () {
 
     try {
         login(username, password)
-            .then(token => {
-                if (token) {
-                    localStorage.setItem("token", token);
+            .then(data => {
+                if (data) {
+                    localStorage.setItem("token", data.token);
+                    localStorage.setItem("refreshToken", data.refreshToken);
                     alert("You are logged in!");
                 } else {
                     alert("Invalid username or password");
@@ -33,10 +34,10 @@ async function login(username, password) {
 
     if (response.ok) {
         const data = await response.json();
-        return data.token;
+        return data;
     } else if (response.status === 401) {
         return null;
     } else {
         throw new Error("Login failed");
     }
-}
+}   

@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SoapCore;
-using System.ServiceModel;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using static FunWithXml_API.Services.IAuthService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +45,22 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = false,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("C4aFJ0hlUIHvFPrIjyfWzjQoq4RiW/2s7/0B/tzMx5o="))
     };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnTokenValidated = async context =>
+        {
+            var authService = context.HttpContext.RequestServices.GetRequiredService<IAuthService>();
+            var token = context.SecurityToken as JwtSecurityToken;
+            var tokenString = context.Request.Headers["Authorization"].ToString().Split(" ")[1];
+            var isBlackListed = await authService.IsTokenBlackListedAsync(tokenString);
+            if (isBlackListed)
+            {
+                context.Fail("Unauthorized");
+            }
+        }
+    };
+
 });
 
 builder.Services.AddScoped<IBodyMeasurementsService, BodyMeasurementService>();

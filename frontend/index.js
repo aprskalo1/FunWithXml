@@ -23,6 +23,35 @@ function generateXmlFromCsv(csvData) {
     return xmlBody;
 }
 
+async function tryRefresh() {
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (!refreshToken) {
+        throw new Error("No refresh token found");
+    }
+
+    fetch("https://localhost:7238/api/Auth/RefreshToken", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(refreshToken)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to refresh token");
+            }
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem("token", data.newAccesToken);
+            localStorage.setItem("refreshToken", data.newRefreshToken);
+            console.log("Token refreshed successfully");
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+}
+
 document.getElementById("xsdValidation").addEventListener("click", function () {
     const csvData = document.getElementById("input").value.trim();
 
@@ -50,14 +79,12 @@ document.getElementById("xsdValidation").addEventListener("click", function () {
                 alert(data);
             })
             .catch(error => {
-                console.error("Error:", error);
-                alert("Error while validating against XSD. Please check the console for more details.");
+                tryRefresh();
+                alert("Token refreshed.");
             });
     } catch (error) {
         console.error("Error:", error);
-        alert(error.message);
-    }
-});
+    }});
 
 document.getElementById("rngValidation").addEventListener("click", function () {
     const csvData = document.getElementById("input").value.trim();
